@@ -1,0 +1,9 @@
+sudo yum -y update
+sudo yum -y oracle-node-release-el7 oracle-release-el7
+sudo yum -y install --disablerepo=ol7_developer_EPEL nodejs node-oracledb-node10
+sudo sh -c "echo /usr/lib/oracle/18.3/client64/lib > /etc/ld.so.conf.d/oracle-instantclient.conf"
+sudo ldconfig
+sudo firewall-cmd --permanent --add-port=3266/tcp
+sudo firewall-cmd --reload
+
+

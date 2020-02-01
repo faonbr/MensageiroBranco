@@ -1,0 +1,3 @@
+create user msgbranco identified by MensageiroBranco2020;
+grant connect, resource to msgbranco;
+

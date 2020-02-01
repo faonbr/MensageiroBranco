@@ -1,0 +1,37 @@
+
+Admin
+MsgBranco2020
+
+App user:
+Msgbranco
+MensageiroBranco2020
+
+
+SOURCE:
+https://blogs.oracle.com/developers/connecting-to-autonomous-transaction-processing-database-from-a-nodejs,-python-or-php-app-in-oracle-cloud-infrastructure-v2?utm_source=WebApp&utm_medium=Webn_guest&utm_campaign=EngageSocial
+
+
+COMMANDS:
+
+sudo sh -c "echo /usr/lib/oracle/18.3/client64/lib > /etc/ld.so.conf.d/oracle-instantclient.conf"
+sudo ldconfig 
+
+sudo mkdir -pv /etc/ORACLE/WALLETS/ATP1
+sudo chown -R opc /etc/ORACLE
+
+cd /etc/ORACLE/WALLETS/ATP1
+unzip <wallet zip file>
+sudo chmod -R 700 /etc/ORACLE
+
+#Edit sqlnet.ora to point to the Wallet location, replacing ?/network/admin. After editing sqlnet.ora should look something like this.
+
+vi /etc/ORACLE/WALLETS/ATP1/sqlnet.ora 
+## Replace DIRECTORY value with "/etc/ORACLE/WALLETS/ATP1" in the connect string.
+
+export TNS_ADMIN=/etc/ORACLE/WALLETS/ATP1
+export NODE_PATH=`npm root -g`
+
+export NODE_ORACLEDB_USER=msgbranco
+export NODE_ORACLEDB_PASSWORD=msgbranco
+export NODE_ORACLEDB_CONNECTIONSTRING=msgbrancodb_medium
+export NODE_ORACLEDB_EXTERNALAUTH=false
