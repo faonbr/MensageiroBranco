@@ -2,6 +2,9 @@
 
 export PORT=3266
 
+# Supported values are ALIBABA, AWS, AZURE, IBM, GCP, OCI
+export CLOUD_PROVIDER=AWS
+
 # setting DEBUG_LOGIN to true will enable logging both in node.js and
 # in your web browser's JavaScript console.
 # this setting is intended for development and debugging purposes and shouldn't
