@@ -49,14 +49,15 @@ exports.listAll = function(req, res){
     TableName: 'MsgBranco-Clients'
   };
 
-  var request = dynamodb.scan(params, function(err, data) {
-  if (err){
-    logger.log(err, err.stack); // an error occurred
-  }else{
-    logger.log(data);           // successful response
-    logger.log('response: '+ data);
-    res.status(200).json(data);
-  }
+  dynamodb.scan(params, function(err, data) {
+    if (err){
+      logger.log(err, err.stack); // an error occurred
+    }else{
+      logger.log(data);           // successful response
+      logger.log('response: '+ data);
+      res.status(200).json(data);
+    }
+  });
 
   // logger.log('response: '+ answer);
   // res.status(200).json(answer);
