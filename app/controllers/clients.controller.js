@@ -52,7 +52,7 @@ exports.listAll = function(req, res){
   let lastEvaluatedKey = 'dummy'; // string must not be empty
   answer = [];
   while (lastEvaluatedKey) {
-    const data = await documentClient.scan(params).promise();
+    const data = documentClient.scan(params).promise();
     answer.push(...data.Items);
     lastEvaluatedKey = data.LastEvaluatedKey;
     if (lastEvaluatedKey) {
