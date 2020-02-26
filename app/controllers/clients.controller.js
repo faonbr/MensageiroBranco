@@ -1,4 +1,8 @@
 var clients = require('../model/clients.model.js');
+var aws = require('aws-sdk');
+aws.config.update({
+  region: "us-east-1"
+});
 
 const scanAll = async (params) => {
   let lastEvaluatedKey = 'dummy'; // string must not be empty
@@ -13,18 +17,6 @@ const scanAll = async (params) => {
   }
   return itemsAll;
 }
-
-
-
-
-// Need to load different DB_files depending on the provider chosen.
-if (process.env.CLOUD_PROVIDER==AWS){
-  logger.log("Using AWS Cloud Provider");
-}
-var AWS = require('aws-sdk');
-AWS.config.update({
-  region: "us-east-1"
-});
 
 //Logs information.
 var logger = require('../logging.js');
