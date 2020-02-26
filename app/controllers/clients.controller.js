@@ -36,22 +36,30 @@ exports.listAll = function(req, res){
   logger.log('Entering apps listAll function.');
   //answer = {"clients":[]}
 
-  // logger.log('Setting up params');
-  // var params = {
-  //   TableName: 'MsgBranco-Clients',
-  //   ProjectionExpression: "id, IP, name, status"
-  // };
-  //
-  // logger.log('Preparing docClient');
-  // var docClient = new AWS.DynamoDB.DocumentClient();
-  // logger.log("Scanning Movies table.");
-  // docClient.scan(params, onScan);
-
+  aws.config.getCredentials(function(err) {
+    if (err) console.log(err.stack);
+    // credentials not loaded
+    else {
+      console.log("Access key:", aws.config.credentials.accessKeyId);
+      console.log("Secret access key:", aws.config.credentials.secretAccessKey);
+    }
+  });
   var params = {
     // ProjectionExpression: "id, IP, name, status",
     TableName: 'MsgBranco-Clients'
   };
-  answer = scanAll(params);
+  //answer = scanAll(params);
+  let lastEvaluatedKey = 'dummy'; // string must not be empty
+  answer = [];
+  while (lastEvaluatedKey) {
+    const data = await documentClient.scan(params).promise();
+    answer.push(...data.Items);
+    lastEvaluatedKey = data.LastEvaluatedKey;
+    if (lastEvaluatedKey) {
+      params.ExclusiveStartKey = lastEvaluatedKey;
+    }
+  }
+  return answer;
 
   logger.log('response: '+ answer);
   res.status(200).json(answer);
