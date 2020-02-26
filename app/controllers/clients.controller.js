@@ -27,7 +27,7 @@ exports.listAll = function(req, res){
   //answer = {"clients":[]}
 
   var params = {
-    ProjectionExpression: "id, IP, description, status",
+    ProjectionExpression: "id, IP, description, online",
     TableName: TABLE_NAME
   };
 
