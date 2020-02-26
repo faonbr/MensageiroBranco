@@ -25,7 +25,7 @@ exports.listAll = function(req, res){
   logger.log('-----------------');
   logger.log('Entering messages listAll function.');
   var params = {
-    ProjectionExpression: "from-id, to-id, message, sent-date",
+    ProjectionExpression: "fromid, toid, message, sent-date",
     TableName: TABLE_NAME
   };
 
