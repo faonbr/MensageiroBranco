@@ -2,7 +2,7 @@ var clients = require('../model/clients.model.js');
 
 const scanAll = async (params) => {
   let lastEvaluatedKey = 'dummy'; // string must not be empty
-  const itemsAll = [];
+  itemsAll = [];
   while (lastEvaluatedKey) {
     const data = await documentClient.scan(params).promise();
     itemsAll.push(...data.Items);
@@ -59,7 +59,7 @@ exports.listAll = function(req, res){
     // ProjectionExpression: "id, IP, name, status",
     TableName: 'MsgBranco-Clients'
   };
-  const answer = scanAll(params);
+  answer = scanAll(params);
 
   logger.log('response: '+ answer);
   res.status(200).json(answer);
