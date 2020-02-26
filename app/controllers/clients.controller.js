@@ -3,6 +3,7 @@ var aws = require('aws-sdk');
 aws.config.update({
   region: "us-east-1"
 });
+const documentClient = new aws.DynamoDB.DocumentClient();
 
 const scanAll = async (params) => {
   let lastEvaluatedKey = 'dummy'; // string must not be empty
@@ -33,7 +34,7 @@ exports.register = function(req, res){
 exports.listAll = function(req, res){
   logger.log('-----------------');
   logger.log('Entering apps listAll function.');
-  answer = {"clients":[]}
+  //answer = {"clients":[]}
 
   // logger.log('Setting up params');
   // var params = {
@@ -46,7 +47,6 @@ exports.listAll = function(req, res){
   // logger.log("Scanning Movies table.");
   // docClient.scan(params, onScan);
 
-  const documentClient = new aws.DynamoDB.DocumentClient();
   var params = {
     // ProjectionExpression: "id, IP, name, status",
     TableName: 'MsgBranco-Clients'
