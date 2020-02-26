@@ -3,13 +3,13 @@ var aws = require('aws-sdk');
 aws.config.update({
   region: "us-east-1"
 });
-const documentClient = new aws.DynamoDB.DocumentClient();
+const dynamodb = new aws.DynamoDB.DocumentClient();
 
 const scanAll = async (params) => {
   let lastEvaluatedKey = 'dummy'; // string must not be empty
   itemsAll = [];
   while (lastEvaluatedKey) {
-    const data = await documentClient.scan(params).promise();
+    const data = await dynamodb.scan(params).promise();
     itemsAll.push(...data.Items);
     lastEvaluatedKey = data.LastEvaluatedKey;
     if (lastEvaluatedKey) {
@@ -48,21 +48,18 @@ exports.listAll = function(req, res){
     // ProjectionExpression: "id, IP, name, status",
     TableName: 'MsgBranco-Clients'
   };
-  //answer = scanAll(params);
-  let lastEvaluatedKey = 'dummy'; // string must not be empty
-  answer = [];
-  while (lastEvaluatedKey) {
-    const data = documentClient.scan(params).promise();
-    answer.push(...data.Items);
-    lastEvaluatedKey = data.LastEvaluatedKey;
-    if (lastEvaluatedKey) {
-      params.ExclusiveStartKey = lastEvaluatedKey;
-    }
-  }
-  return answer;
 
-  logger.log('response: '+ answer);
-  res.status(200).json(answer);
+  var request = dynamodb.scan(params, function(err, data) {
+  if (err){
+    logger.log(err, err.stack); // an error occurred
+  }else{
+    logger.log(data);           // successful response
+    logger.log('response: '+ data);
+    res.status(200).json(data);
+  }
+
+  // logger.log('response: '+ answer);
+  // res.status(200).json(answer);
 };
 
 exports.details = function(req, res){
