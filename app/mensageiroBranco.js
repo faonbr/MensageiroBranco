@@ -11,6 +11,8 @@ var config = require('./config.js');
 var clients = require('./routes/clients.js')(app);
 var messages = require('./routes/messages.js')(app);
 
+console.log('Current Time Millis: '+ Date.now() );
+
 // Set Port
 app.set('port', (process.env.PORT || config.APP_DEFAULT_PORT));
 app.listen(app.get('port'), function(){
