@@ -1,4 +1,6 @@
-package com.faoncloud.app.messenger.MensageiroBranco.beans;
+package com.faoncloud.app.messenger.MensageiroBranco.client;
+
+import java.util.Date;
 
 //{
 //	  "ip": "1.1.1.1",
@@ -9,16 +11,16 @@ package com.faoncloud.app.messenger.MensageiroBranco.beans;
 //	  "lasttimeon": "1582681612029"
 //	}
 
-public class ClientBean {
+public class Client {
 	
-	private String id;
+	private Integer id;
 	private String ip;
 	private String secret;
 	private String description;
 	private String onlinestatus;
-	private String lasttimeon;
+	private Date lasttimeon;
 
-	public ClientBean(String id, String ip, String secret, String description, String onlinestatus, String lasttimeon) {
+	public Client(Integer id, String ip, String secret, String description, String onlinestatus, Date lasttimeon) {
 		super();
 		this.id = id;
 		this.ip = ip;
@@ -28,11 +30,11 @@ public class ClientBean {
 		this.lasttimeon = lasttimeon;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -68,20 +70,20 @@ public class ClientBean {
 		this.onlinestatus = onlinestatus;
 	}
 
-	public String getLasttimeon() {
+	public Date getLasttimeon() {
 		return lasttimeon;
 	}
 
-	public void setLasttimeon(String lasttimeon) {
+	public void setLasttimeon(Date lasttimeon) {
 		this.lasttimeon = lasttimeon;
 	}
 
 	@Override
 	public String toString() {
-		return "ClientBean [id=" + id + ", ip=" + ip + ", secret=" + secret + ", description=" + description
+		return "Client [id=" + id + ", ip=" + ip + ", secret=" + secret + ", description=" + description
 				+ ", onlinestatus=" + onlinestatus + ", lasttimeon=" + lasttimeon + "]";
 	}
-	
+
 	
 	
 }

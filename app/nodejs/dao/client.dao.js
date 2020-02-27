@@ -14,20 +14,13 @@ var logger = require('../logging.js');
 //basic-auth is used to validate basic authentication
 //var auth = require('basic-auth');
 
-exports.register = function(req, res){
+exports.retreiveAllClients = function(req, res){
   logger.log('-----------------');
-  logger.log('Entering apps register function.');
-  answer = {"clients":[]}
-  res.status(200).json(answer);
-};
-
-exports.listAll = function(req, res){
-  logger.log('-----------------');
-  logger.log('Entering apps listAll function.');
+  logger.log('Entering retreiveAllClients function.');
   //answer = {"clients":[]}
 
   var params = {
-    ProjectionExpression: "ip, id, description, onlinestatus, lasttimeon",
+    ProjectionExpression: "id, ip, description, onlinestatus, lasttimeon",
     TableName: TABLE_NAME
   };
 
@@ -45,29 +38,33 @@ exports.listAll = function(req, res){
 
 };
 
-exports.details = function(req, res){
+exports.retreiveClient = function(req, res){
   logger.log('-----------------');
-  logger.log('Entering apps details function.');
+  logger.log('Entering retreiveClient function.');
   answer = {"clients":[]}
   res.status(200).json(answer);
 };
 
-exports.deRegister = function(req, res){
+exports.registerClientOnline = function(req, res){
   logger.log('-----------------');
-  logger.log('Entering apps deRegister function.');
+  logger.log('Entering registerClientOnline function.');
   answer = {"clients":[]}
   res.status(200).json(answer);
 };
 
-exports.keepAlive = function(req, res){
+exports.registerClientOffline = function(req, res){
   logger.log('-----------------');
-  logger.log('Entering apps keepAlive function.');
+  logger.log('Entering registerClientOffline function.');
   answer = {"clients":[]}
   res.status(200).json(answer);
 };
 
-
-
+exports.updateInfo = function(req, res){
+  logger.log('-----------------');
+  logger.log('Entering updateInfo function.');
+  answer = {"clients":[]}
+  res.status(200).json(answer);
+};
 
 
 function onScan(err, data) {

@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "fromid": 2,
+        "toid": 1,
+        "message": "Hello Android, this is iOS!",
+        "sentdate": "2020-02-26T01:46:52.030+0000",
+        "read": "yes"
+    },
+    {
+        "id": 2,
+        "fromid": 3,
+        "toid": 1,
+        "message": "Hello Android, this is Tablet 1!",
+        "sentdate": "2020-02-26T01:46:52.032+0000",
+        "read": "no"
+    },
+    {
+        "id": 3,
+        "fromid": 4,
+        "toid": 1,
+        "message": "Hello Android, this is Tablet 2!",
+        "sentdate": "2020-02-26T01:46:52.033+0000",
+        "read": "no"
+    },
+    {
+        "id": 4,
+        "fromid": 1,
+        "toid": 2,
+        "message": "Hello iOS, this is Android!",
+        "sentdate": "2020-02-26T01:46:52.033+0000",
+        "read": "no"
+    }
+]

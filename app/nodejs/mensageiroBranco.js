@@ -8,8 +8,8 @@ var app = express();
 var config = require('./config.js');
 
 //Routes to Users endpoint
-var clients = require('./routes/clients.js')(app);
-var messages = require('./routes/messages.js')(app);
+var clientsResource = require('./routes/clients.resource.js')(app);
+var messagesResouce = require('./routes/messages.resource.js')(app);
 
 console.log('Current Time Millis: '+ Date.now() );
 

@@ -14,18 +14,11 @@ var logger = require('../logging.js');
 //basic-auth is used to validate basic authentication
 //var auth = require('basic-auth');
 
-exports.publish = function(req, res){
-  logger.log('-----------------');
-  logger.log('Entering messages publish function.');
-  answer = {"messages":[]}
-  res.status(200).json(answer);
-};
-
 exports.listAll = function(req, res){
   logger.log('-----------------');
   logger.log('Entering messages listAll function.');
   var params = {
-    ProjectionExpression: "fromid, toid, message, sentdate",
+    ProjectionExpression: "id, fromid, toid, message, sentdate, read",
     TableName: TABLE_NAME
   };
 
@@ -42,9 +35,37 @@ exports.listAll = function(req, res){
   });
 };
 
+exports.retreiveAllMessages = function(req, res){
+  logger.log('-----------------');
+  logger.log('Entering retreiveAllMessages function.');
+  answer = {"messages":[]}
+  res.status(200).json(answer);
+};
+
+exports.retreiveUnreadMessages = function(req, res){
+  logger.log('-----------------');
+  logger.log('Entering retreiveUnreadMessages function.');
+  answer = {"messages":[]}
+  res.status(200).json(answer);
+};
+
+exports.retreiveReadMessages = function(req, res){
+  logger.log('-----------------');
+  logger.log('Entering retreiveReadMessages function.');
+  answer = {"messages":[]}
+  res.status(200).json(answer);
+};
+
 exports.receiveLatests = function(req, res){
   logger.log('-----------------');
-  logger.log('Entering messages receiveLatests function.');
+  logger.log('Entering receiveLatests function.');
+  answer = {"messages":[]}
+  res.status(200).json(answer);
+};
+
+exports.updateMessageToReadStatus = function(req, res){
+  logger.log('-----------------');
+  logger.log('Entering updateMessageToReadStatus function.');
   answer = {"messages":[]}
   res.status(200).json(answer);
 };
